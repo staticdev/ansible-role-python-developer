@@ -45,17 +45,19 @@ Here is the list of all variables and their default values:
 - hosts: all
   roles:
     - role: staticdev.python-developer
-      install_pycharm: true
+      vars:
+        install_pycharm: true
 
 # role with vscode and extensions
 - hosts: all
   roles:
     - role: staticdev.python-developer
-      install_vscode: true
-      vscode_extensions:
-        - ms-python.python
-        - ms-python.vscode-pylance
-        - shan.code-settings-sync
+      vars:
+        install_vscode: true
+        vscode_extensions:
+          - ms-python.python
+          - ms-python.vscode-pylance
+          - shan.code-settings-sync
 ```
 
 ## License
