@@ -62,8 +62,8 @@
 
 - name: Install pycharm
   include_tasks: pycharm.yml
-  when: install_pycharm
+  when: "{{ install_pycharm }}"
 
 - name: Install vscode
   include_tasks: vscode.yml
-  when: install_vscode
+  when: "{{ install_vscode }}"

@@ -4,7 +4,7 @@ roles:
     version: 1.1.0
   - name: oefenweb.pycharm
     version: v5.0.7
-    when: install_pycharm
+    when: "{{ install_pycharm }}"
   - name: ngetchell.vscode
     version: v1.0.3
-    when: install_vscode
+    when: "{{ install_vscode }}"
