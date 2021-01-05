@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   author: staticdev
+  role_name: python-developer
   description: This install packages for developing in Python on multiple versions using Cookiecutter Hypermodern Python.
 
   license:
@@ -16,7 +17,7 @@ galaxy_info:
         - 8
     - name: Fedora
       versions:
-        - all
+        - 33
     - name: Debian
       versions:
         - stretch
@@ -31,6 +32,7 @@ galaxy_info:
   galaxy_tags:
     - python
     - development
+    - developer
     - cookiecutter
     - nox
     - poetry

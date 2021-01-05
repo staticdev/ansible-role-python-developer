@@ -23,13 +23,15 @@ None.
 
 Here is the list of all variables and their default values:
 
-`install_pycharm`: `false`
-`install_vscode`: `false`
-`vscode_extensions`: optional list of name_ids of extensions. eg.: ms-python.python (Python Official Extension)
+- `install_pycharm`: `false`
+- `install_vscode`: `false`
+- `vscode_extensions`: optional list of name_ids of extensions. eg.: ms-python.python (Python Official Extension)
 
 ## Dependencies
 
 - [avanov.pyenv](https://galaxy.ansible.com/avanov/pyenv)
+- [oefenweb.pycharm](https://galaxy.ansible.com/oefenweb/pycharm) (optional)
+- [ngetchell.vscode](https://galaxy.ansible.com/ngetchell/vscode) (optional)
 
 ## Example Playbook
 
