@@ -1,6 +1,6 @@
 ---
 - name: Install pyenv
-  include_role:
+  import_role:
     name: avanov.pyenv
   vars:
     pyenv_owner: "{{ lookup('env', 'USER') }}"
