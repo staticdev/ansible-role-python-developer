@@ -1,0 +1,64 @@
+---
+- name: Install pyenv
+  include_role:
+    name: avanov.pyenv
+  vars:
+    pyenv_owner: "{{ lookup('env', 'USER') }}"
+    pyenv_path: "{{ lookup('env', 'HOME') }}/pyenv"
+    pyenv_global: "3.9.1"
+    pyenv_python_versions:
+      - "3.9.1"
+      - "3.8.6"
+      - "3.7.9"
+      - "3.6.12"
+      - "pypy3.6-7.3.1"
+    pyenv_virtualenvs: []
+
+- name: Ensure pre-commit and pipx are installed
+  package:
+    state: present
+    name:
+      - pre-commit
+      - pipx
+  become: true
+
+- name: Check if cookiecutter is installed
+  shell: cookiecutter --version
+  register: cookiecutter_version_cmd
+  changed_when: false
+  ignore_errors: true
+
+- name: Install cookiecutter
+  command: pipx install cookiecutter
+  register: output
+  when: cookiecutter_version_cmd is failed
+
+- name: Check if poetry is installed
+  shell: poetry --version
+  register: poetry_version_cmd
+  changed_when: false
+  ignore_errors: true
+
+- name: Download poetry
+  get_url:
+    url: https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
+    dest: "{{ lookup('env', 'HOME') }}"
+    mode: "0400"
+  when: poetry_version_cmd is failed
+
+- name: Install poetry
+  command: "python {{ lookup('env', 'HOME') }}/get-poetry.py"
+  when: poetry_version_cmd is failed
+
+- name: Check if nox is installed
+  shell: nox --version
+  register: nox_version_cmd
+  changed_when: false
+  ignore_errors: true
+
+- name: Install nox
+  command: pipx install nox
+  when: nox_version_cmd is failed
+
+- name: Install nox-poetry
+  command: pipx inject nox nox-poetry
