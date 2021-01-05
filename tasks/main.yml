@@ -23,7 +23,7 @@
   become: true
 
 - name: Check if cookiecutter is installed
-  shell: cookiecutter --version
+  command: cookiecutter --version
   register: cookiecutter_version_cmd
   changed_when: false
   ignore_errors: true
@@ -34,7 +34,7 @@
   when: cookiecutter_version_cmd is failed
 
 - name: Check if poetry is installed
-  shell: poetry --version
+  command: poetry --version
   register: poetry_version_cmd
   changed_when: false
   ignore_errors: true
@@ -51,7 +51,7 @@
   when: poetry_version_cmd is failed
 
 - name: Check if nox is installed
-  shell: nox --version
+  command: nox --version
   register: nox_version_cmd
   changed_when: false
   ignore_errors: true
@@ -60,5 +60,10 @@
   command: pipx install nox
   when: nox_version_cmd is failed
 
-- name: Install nox-poetry
-  command: pipx inject nox nox-poetry
+- name: Install pycharm
+  include_tasks: pycharm.yml
+  when: install_pycharm
+
+- name: Install vscode
+  include_tasks: vscode.yml
+  when: install_vscode

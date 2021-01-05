@@ -1,6 +1,7 @@
+---
 galaxy_info:
   author: staticdev
-  description: This install packages for developing in Python on multiple versions using [Cookiecutter Hypermodern Python](https://github.com/cjolowicz/cookiecutter-hypermodern-python).
+  description: This install packages for developing in Python on multiple versions using Cookiecutter Hypermodern Python.
 
   license:
     - MIT
@@ -35,7 +36,7 @@ galaxy_info:
     - poetry
     - pyenv
     - pipx
-    - pre-commit
+    - precommit
 
 dependencies:
   - role: avanov.pyenv

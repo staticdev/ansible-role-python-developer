@@ -1,0 +1,6 @@
+---
+- name: Install vscode
+  include_role:
+    name: ngetchell.vscode
+  vars:
+    vscode_extension: vscode_extensions

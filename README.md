@@ -21,7 +21,11 @@ None.
 
 ## Role Variables
 
-None.
+Here is the list of all variables and their default values:
+
+`install_pycharm`: `false`
+`install_vscode`: `false`
+`vscode_extensions`: optional list of name_ids of extensions. eg.: ms-python.python (Python Official Extension)
 
 ## Dependencies
 
@@ -30,9 +34,26 @@ None.
 ## Example Playbook
 
 ```yaml
+# role without IDE
 - hosts: all
   roles:
     - role: staticdev.python-developer
+
+# role with pycharm
+- hosts: all
+  roles:
+    - role: staticdev.python-developer
+      install_pycharm: true
+
+# role with vscode and extensions
+- hosts: all
+  roles:
+    - role: staticdev.python-developer
+      install_vscode: true
+      vscode_extensions:
+        - ms-python.python
+        - ms-python.vscode-pylance
+        - shan.code-settings-sync
 ```
 
 ## License

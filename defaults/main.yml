@@ -1,2 +1,3 @@
 ---
-# defaults file for staticdev.python-developer
+install_pycharm: false
+install_vscode: false
