@@ -2,7 +2,18 @@
 
 [![CI](https://github.com/staticdev/ansible-role-python-developer/workflows/CI/badge.svg?event=push)](https://github.com/staticdev/ansible-role-python-developer/actions?query=workflow%3ACI)
 
-This install packages for developing in Python on multiple versions for people using [Cookiecutter Hypermodern Python](https://github.com/cjolowicz/cookiecutter-hypermodern-python).
+This install packages for developing in Python on multiple versions using [Cookiecutter Hypermodern Python](https://github.com/cjolowicz/cookiecutter-hypermodern-python).
+
+## Features
+
+Installs:
+
+- pre-commit
+- pipx
+- nox
+- pyenv
+- poetry
+- cookiecutter
 
 ## Requirements
 
