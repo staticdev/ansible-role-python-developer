@@ -46,6 +46,6 @@ dependencies:
   - name: oefenweb.pycharm
     version: v5.0.7
     when: "{{ install_pycharm }}"
-  - name: ngetchell.vscode
-    version: v1.0.3
+  - name: gantsign.visual-studio-code
+    version: 6.6.0
     when: "{{ install_vscode }}"
