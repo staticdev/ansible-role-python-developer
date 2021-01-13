@@ -2,3 +2,4 @@
 - name: Install pycharm
   include_role:
     name: oefenweb.pycharm
+  become: true
