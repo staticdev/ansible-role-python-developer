@@ -2,9 +2,6 @@
 roles:
   - name: staticdev.ansible_galaxy_pyenv
     version: 1.1.1
-  - name: oefenweb.pycharm
-    version: v5.0.7
-    when: "{{ install_pycharm }}"
   - name: gantsign.visual-studio-code
     version: 6.6.0
     when: "{{ install_vscode }}"
