@@ -24,6 +24,7 @@ None.
 Here is the list of all variables and their default values:
 
 - `install_pycharm`: `false`
+- `pycharm_flavor`: `pycharm-community`. You can use also `pycharm-professional` or `pycharm-educational`.
 - `install_vscode`: `false`
 - `vscode_extensions`: optional list of name_ids of extensions. eg.: ms-python.python (Python Official Extension)
 
@@ -47,6 +48,7 @@ Here is the list of all variables and their default values:
     - role: staticdev.python-developer
       vars:
         install_pycharm: true
+        pycharm_flavor: pycharm-educational
 
 # role with vscode and extensions
 - hosts: all

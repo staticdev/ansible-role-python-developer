@@ -1,7 +1,7 @@
 ---
 - name: Install pyenv
   import_role:
-    name: avanov.pyenv
+    name: staticdev.ansible_galaxy_pyenv
   vars:
     pyenv_owner: "{{ lookup('env', 'USER') }}"
     pyenv_path: "{{ lookup('env', 'HOME') }}/pyenv"
@@ -39,12 +39,13 @@
   changed_when: false
   ignore_errors: true
 
-- name: Download poetry
+- name: Download poetry installer
   get_url:
     url: https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
     dest: "{{ lookup('env', 'HOME') }}"
     mode: "0400"
   when: poetry_version_cmd is failed
+  notify: delete poetry installer
 
 - name: Install poetry
   command: "python {{ lookup('env', 'HOME') }}/get-poetry.py"

@@ -1,2 +1,5 @@
 ---
-# handlers file for staticdev.python-developer
+- name: delete poetry installer
+  file:
+    path: "/home/{{ lookup('env', 'USER') }}/get-poetry.py"
+    state: absent

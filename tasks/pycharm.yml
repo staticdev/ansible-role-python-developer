@@ -1,5 +1,6 @@
 ---
 - name: Install pycharm
-  include_role:
-    name: oefenweb.pycharm
+  community.general.snap:
+    name: "{{ pycharm_flavor }}"
+    classic: true
   become: true
