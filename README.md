@@ -1,5 +1,6 @@
 # Ansible Role: Python Developer
 
+![Status](https://badgen.net/badge/status/beta/orange)
 [![CI](https://github.com/staticdev/ansible-role-python-developer/workflows/CI/badge.svg?event=push)](https://github.com/staticdev/ansible-role-python-developer/actions?query=workflow%3ACI)
 
 This install packages for developing in Python on multiple versions using [Cookiecutter Hypermodern Python](https://github.com/cjolowicz/cookiecutter-hypermodern-python).
@@ -30,7 +31,7 @@ Here is the list of all variables and their default values:
 
 ## Dependencies
 
-- [avanov.pyenv](https://galaxy.ansible.com/avanov/pyenv)
+- [staticdev.ansible_galaxy_pyenv](https://github.com/staticdev/ansible-galaxy-pyenv)
 - [oefenweb.pycharm](https://galaxy.ansible.com/oefenweb/pycharm) (optional)
 - [ngetchell.vscode](https://galaxy.ansible.com/ngetchell/vscode) (optional)
 
