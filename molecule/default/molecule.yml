@@ -2,11 +2,12 @@
 dependency:
   name: galaxy
   options:
-    role-file: requirements.yml  
+    role-file: requirements.yml
 driver:
   name: docker
 platforms:
   - name: instance
+    image: "staticdev/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
