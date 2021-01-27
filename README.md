@@ -32,8 +32,7 @@ Here is the list of all variables and their default values:
 ## Dependencies
 
 - [staticdev.ansible_galaxy_pyenv](https://github.com/staticdev/ansible-galaxy-pyenv)
-- [oefenweb.pycharm](https://galaxy.ansible.com/oefenweb/pycharm) (optional)
-- [ngetchell.vscode](https://galaxy.ansible.com/ngetchell/vscode) (optional)
+- [gantsign.visual-studio-code](https://galaxy.ansible.com/gantsign/visual-studio-code) (optional)
 
 ## Example Playbook
 
