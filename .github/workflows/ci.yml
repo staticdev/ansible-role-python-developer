@@ -36,6 +36,15 @@ jobs:
     name: Molecule
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        img:
+          - staticdev/docker-ubuntu2010-ansible:latest
+          - geerlingguy/docker-ubuntu2004-ansible:latest
+          - geerlingguy/docker-ubuntu1804-ansible:latest
+          - geerlingguy/docker-debian10-ansible:latest
+          - geerlingguy/docker-debian9-ansible:latest
+
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2.3.4
@@ -55,4 +64,4 @@ jobs:
         env:
           PY_COLORS: "1"
           ANSIBLE_FORCE_COLOR: "1"
-          MOLECULE_DISTRO: ubuntu2010
+          MOLECULE_IMG: ${{ matrix.img }}
