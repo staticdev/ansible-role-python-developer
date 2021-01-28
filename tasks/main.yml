@@ -3,8 +3,8 @@
   import_role:
     name: staticdev.ansible_galaxy_pyenv
   vars:
-    pyenv_owner: "{{ lookup('env', 'USER') }}"
-    pyenv_path: "{{ lookup('env', 'HOME') }}/pyenv"
+    pyenv_owner: "{{ ansible_env.USER }}"
+    pyenv_path: "{{ ansible_env.HOME }}/pyenv"
     pyenv_global: "3.9.1"
     pyenv_python_versions:
       - "3.9.1"
@@ -42,13 +42,13 @@
 - name: Download poetry installer
   get_url:
     url: https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
-    dest: "{{ lookup('env', 'HOME') }}"
+    dest: "{{ ansible_env.HOME }}/get-poetry.py"
     mode: "0400"
   when: poetry_version_cmd is failed
   notify: delete poetry installer
 
 - name: Install poetry
-  command: "python {{ lookup('env', 'HOME') }}/get-poetry.py"
+  command: "python3 {{ ansible_env.HOME }}/get-poetry.py"
   when: poetry_version_cmd is failed
 
 - name: Check if nox is installed
