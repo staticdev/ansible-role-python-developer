@@ -14,28 +14,48 @@
       - "pypy3.6-7.3.1"
     pyenv_virtualenvs: []
 
-- name: Ensure pre-commit and pipx are installed
+- name: Ensure python3-venv is installed
   package:
     state: present
-    name:
-      - pre-commit
-      - pipx
+    name: python3-venv
   become: true
 
-- name: Check if cookiecutter is installed
-  command: cookiecutter --version
-  register: cookiecutter_version_cmd
+- name: Check if pipx is installed
+  command: pipx --version
+  register: pipx_version_cmd
   changed_when: false
   ignore_errors: true
+
+- name: Install pipx
+  package:
+    state: present
+    name: pipx
+  become: true
+  when: pipx_version_cmd is failed
+
+- name: Check if pre-commit is installed
+  stat:
+    path: "{{ ansible_env.HOME }}/.local/pipx/venvs/pre-commit"
+  register: pre_commit_folder_check
+
+- name: Install pre-commit
+  command: pipx install pre-commit
+  register: output
+  when: pre_commit_folder_check is failed
+
+- name: Check if cookiecutter is installed
+  stat:
+    path: "{{ ansible_env.HOME }}/.local/pipx/venvs/cookiecutter"
+  register: cookiecutter_folder_check
 
 - name: Install cookiecutter
   command: pipx install cookiecutter
   register: output
-  when: cookiecutter_version_cmd is failed
+  when: cookiecutter_folder_check is failed
 
 - name: Check if poetry is installed
-  command: poetry --version
-  register: poetry_version_cmd
+  command: poetry
+  register: poetry_cmd
   changed_when: false
   ignore_errors: true
 
@@ -44,22 +64,21 @@
     url: https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
     dest: "{{ ansible_env.HOME }}/get-poetry.py"
     mode: "0400"
-  when: poetry_version_cmd is failed
+  when: poetry_cmd is failed
   notify: delete poetry installer
 
 - name: Install poetry
   command: "python3 {{ ansible_env.HOME }}/get-poetry.py"
-  when: poetry_version_cmd is failed
+  when: poetry_cmd is failed
 
 - name: Check if nox is installed
-  command: nox --version
-  register: nox_version_cmd
-  changed_when: false
-  ignore_errors: true
+  stat:
+    path: "{{ ansible_env.HOME }}/.local/pipx/venvs/nox"
+  register: nox_folder_check
 
 - name: Install nox
   command: pipx install nox
-  when: nox_version_cmd is failed
+  when: nox_folder_check is failed
 
 - name: Install pycharm
   include_tasks: pycharm.yml
