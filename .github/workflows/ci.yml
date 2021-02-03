@@ -40,8 +40,8 @@ jobs:
       matrix:
         img:
           - staticdev/docker-ubuntu2010-ansible:latest
-          - geerlingguy/docker-ubuntu2004-ansible:latest
-          - geerlingguy/docker-ubuntu1804-ansible:latest
+          # - geerlingguy/docker-ubuntu2004-ansible:latest
+          # - geerlingguy/docker-ubuntu1804-ansible:latest
           # - geerlingguy/docker-debian10-ansible:latest
           # - geerlingguy/docker-debian9-ansible:latest
 
