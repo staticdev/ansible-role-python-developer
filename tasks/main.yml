@@ -15,12 +15,11 @@
     pyenv_virtualenvs: []
 
 - name: Ensure pre-commit and pipx are installed
-  package:
+  pip:
     state: present
     name:
       - pre-commit
       - pipx
-  become: true
 
 - name: Check if cookiecutter is installed
   command: cookiecutter --version
