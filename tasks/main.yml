@@ -60,6 +60,10 @@
   command: pipx install nox
   when: nox_version_cmd is failed
 
+- name: Install nox-poetry
+  command: pipx inject nox nox-poetry
+  when: nox_version_cmd is failed
+
 - name: Install pycharm
   include_tasks: pycharm.yml
   when: install_pycharm
