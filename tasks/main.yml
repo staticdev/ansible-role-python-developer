@@ -14,11 +14,6 @@
       - "pypy3.6-7.3.1"
     pyenv_virtualenvs: []
 
-- name: Ensure python3-venv is installed
-  pip:
-    state: present
-    name: python3-venv
-
 - name: Check if pipx is installed
   command: pipx --version
   register: pipx_version_cmd
@@ -81,7 +76,7 @@
 
 - name: Install nox-poetry
   command: pipx inject nox nox-poetry
-  when: nox_version_cmd is failed
+  when: nox_folder_check is failed
 
 - name: Install pycharm
   include_tasks: pycharm.yml
