@@ -14,12 +14,12 @@ repos:
     hooks:
       - id: prettier
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.17.0
+    rev: v1.26.0
     hooks:
       - id: yamllint
         args: [-c=.yamllint]
   - repo: https://github.com/ansible-community/ansible-lint.git
-    rev: v4.3.7
+    rev: v5.0.5
     hooks:
       - id: ansible-lint
         files: \.(yaml|yml)$
