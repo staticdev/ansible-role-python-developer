@@ -1,7 +1,7 @@
 ---
 - name: Install pyenv
   import_role:
-    name: staticdev.ansible_galaxy_pyenv
+    name: staticdev.pyenv
   vars:
     pyenv_owner: "{{ ansible_env.USER }}"
     pyenv_path: "{{ ansible_env.HOME }}/pyenv"
