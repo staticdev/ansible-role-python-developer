@@ -21,10 +21,9 @@
   ignore_errors: true
 
 - name: Install pipx
-  package:
-    state: present
+  pip:
     name: pipx
-  become: true
+    extra_args: --user
   when: pipx_version_cmd is failed
 
 - name: Check if pre-commit is installed
