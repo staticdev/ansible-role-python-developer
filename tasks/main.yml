@@ -12,7 +12,7 @@
     pyenv_owner: "{{ ansible_env.USER }}"
     pyenv_path: "{{ ansible_env.HOME }}/pyenv"
     pyenv_global: "{{ pyenv_global }}"
-    pyenv_python_versions: "{{ pyenv_python_versions | default([]) }}"
+    pyenv_python_versions: "{{ pyenv_python_versions }}"
     pyenv_virtualenvs: []
 
 - name: Check if pipx is installed
