@@ -15,7 +15,7 @@
     pyenv_virtualenvs: []
 
 - name: Check if pipx is installed
-  command: pipx --version
+  command: "{{ ansible_env.HOME }}/.local/bin/pipx --version"
   register: pipx_version_cmd
   changed_when: false
   ignore_errors: true
