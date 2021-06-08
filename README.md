@@ -28,6 +28,8 @@ Here is the list of all variables and their default values:
 - `pycharm_flavor`: `pycharm-community`. You can use also `pycharm-professional` or `pycharm-educational`.
 - `install_vscode`: `false`
 - `vscode_extensions`: optional list of name_ids of extensions. eg.: ms-python.python (Python Official Extension)
+- `pyenv_global`: optional Python global version for pyenv (from [staticdev.pyenv](https://github.com/staticdev/ansible-galaxy-pyenv))
+- `pyenv_python_versions`: optional list of Python versions installed (from [staticdev.pyenv](https://github.com/staticdev/ansible-galaxy-pyenv))
 
 ## Dependencies
 
@@ -60,6 +62,16 @@ Here is the list of all variables and their default values:
           - ms-python.python
           - ms-python.vscode-pylance
           - shan.code-settings-sync
+
+# role with pyenv attributes
+- hosts: all
+  roles:
+    - role: staticdev.python-developer
+      vars:
+        pyenv_global: "3.9.6"
+        vscode_extensions:
+          - "3.9.6"
+          - "3.8.11"
 ```
 
 ## License
