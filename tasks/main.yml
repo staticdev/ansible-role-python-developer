@@ -47,7 +47,7 @@
   when: cookiecutter_folder_check is failed
 
 - name: Check if poetry is installed
-  command: poetry
+  command: "{{ ansible_env.HOME }}/.poetry/bin/poetry"
   register: poetry_cmd
   changed_when: false
   ignore_errors: true
