@@ -14,6 +14,16 @@
     pyenv_global: "{{ pyenv_global }}"
     pyenv_python_versions: "{{ pyenv_python_versions }}"
     pyenv_virtualenvs: []
+  when: pyenv_python_versions is defined
+
+- name: Install pyenv
+  import_role:
+    name: staticdev.pyenv
+  vars:
+    pyenv_owner: "{{ ansible_env.USER }}"
+    pyenv_path: "{{ ansible_env.HOME }}/pyenv"
+    pyenv_virtualenvs: []
+  when: pyenv_python_versions is undefined
 
 - name: Check if pipx is installed
   command: "{{ ansible_env.HOME }}/.local/bin/pipx --version"
