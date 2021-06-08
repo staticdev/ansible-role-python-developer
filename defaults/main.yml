@@ -2,4 +2,5 @@
 install_pycharm: false
 pycharm_flavor: pycharm-community
 install_vscode: false
-pyenv_python_versions: ["3.9.5"]
+pyenv_python_versions:
+  - "3.9.5"
