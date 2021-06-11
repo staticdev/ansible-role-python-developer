@@ -6,7 +6,7 @@
   become: true
 
 - name: Install pyenv
-  import_role:
+  include_role:
     name: staticdev.pyenv
   vars:
     pyenv_owner: "{{ ansible_env.USER }}"
