@@ -1,10 +1,4 @@
 ---
-- name: Ensure venv installed
-  package:
-    name: python3-venv
-    state: present
-  become: true
-
 - name: Install pyenv
   include_role:
     name: staticdev.pyenv
@@ -14,6 +8,12 @@
     pyenv_global: "{{ pyenv_global }}"
     pyenv_python_versions: "{{ pyenv_python_versions | default(omit, true) }}"
     pyenv_virtualenvs: []
+
+- name: Ensure venv installed
+  package:
+    name: python3-venv
+    state: present
+  become: true
 
 - name: Check if pipx is installed
   command: "{{ ansible_env.HOME }}/.local/bin/pipx --version"
