@@ -8,7 +8,7 @@
     pyenv_global: "{{ pyenv_global }}"
     pyenv_python_versions: "{{ pyenv_python_versions }}"
     pyenv_virtualenvs: []
-  when: pyenv_python_versions is defined
+  when: pyenv_python_versions
 
 - name: Ensure venv installed
   package:
