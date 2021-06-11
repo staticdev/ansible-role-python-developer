@@ -6,8 +6,9 @@
     pyenv_owner: "{{ ansible_env.USER }}"
     pyenv_path: "{{ ansible_env.HOME }}/pyenv"
     pyenv_global: "{{ pyenv_global }}"
-    pyenv_python_versions: "{{ pyenv_python_versions | default(omit, true) }}"
+    pyenv_python_versions: "{{ pyenv_python_versions }}"
     pyenv_virtualenvs: []
+  when: pyenv_python_versions is defined
 
 - name: Ensure venv installed
   package:
