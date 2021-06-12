@@ -17,4 +17,4 @@
         name: "ansible-role-python-developer"
       vars:
         install_pycharm: true
-        pycharm_flavor: pycharm-educational
+        pycharm_flavor: professional
