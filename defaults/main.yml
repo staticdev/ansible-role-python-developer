@@ -1,4 +1,7 @@
 ---
 install_pycharm: false
-pycharm_flavor: pycharm-community
+pycharm_download_url: https://download.jetbrains.com/python/
+pycharm_flavor: community
+pycharm_install_prefix: /opt
+pycharm_version`: 2021.1.2
 install_vscode: false

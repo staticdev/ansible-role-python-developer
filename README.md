@@ -25,7 +25,8 @@ None.
 Here is the list of all variables and their default values:
 
 - `install_pycharm`: `false`
-- `pycharm_flavor`: `pycharm-community`. You can use also `pycharm-professional` or `pycharm-educational`.
+- `pycharm_flavor`: `community`. You can use also `professional` or `edu`
+- `pycharm_version`: `2021.1.2`
 - `install_vscode`: `false`
 - `vscode_extensions`: optional list of name_ids of extensions. eg.: ms-python.python (Python Official Extension)
 - `pyenv_global`: optional Python global version for pyenv (from [staticdev.pyenv](https://github.com/staticdev/ansible-galaxy-pyenv))
@@ -50,7 +51,7 @@ Here is the list of all variables and their default values:
     - role: staticdev.python-developer
       vars:
         install_pycharm: true
-        pycharm_flavor: pycharm-educational
+        pycharm_flavor: edu
 
 # role with vscode and extensions
 - hosts: all
