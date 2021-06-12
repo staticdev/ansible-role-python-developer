@@ -15,6 +15,6 @@
     - name: "Include ansible-role-python-developer"
       include_role:
         name: "ansible-role-python-developer"
-        vars:
-          install_pycharm: true
-          pycharm_flavor: pycharm-educational
+      vars:
+        install_pycharm: true
+        pycharm_flavor: pycharm-educational
