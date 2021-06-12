@@ -1,4 +1,10 @@
 ---
+- name: Ensure snap is installed
+  package:
+    name: snap
+    state: present
+  become: true
+
 - name: Install pycharm
   community.general.snap:
     name: "{{ pycharm_flavor }}"
