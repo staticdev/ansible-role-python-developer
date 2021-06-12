@@ -8,5 +8,10 @@
       apt: update_cache=yes cache_valid_time=600
       when: ansible_os_family == 'Debian'
 
-  roles:
-    - ansible-role-python-developer
+  # roles:
+  #   - ansible-role-python-developer
+  # create proper scenario after fix of https://github.com/ansible-community/molecule/issues/3158
+  tasks:
+    - name: "Include ansible-role-python-developer"
+      include_role:
+        name: "ansible-role-python-developer"
