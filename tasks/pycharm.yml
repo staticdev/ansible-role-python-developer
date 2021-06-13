@@ -15,4 +15,4 @@
     copy: false
 
 - name: Run pycharm install script
-  ansible.builtin.script: "{{ pycharm_install_prefix }}/pycharm-{{ pycharm_flavor }}-{{ pycharm_version }}/bin/pycharm.sh"
+  shell: "{{ pycharm_install_prefix }}/pycharm-{{ pycharm_flavor }}-{{ pycharm_version }}/bin/pycharm.sh"
