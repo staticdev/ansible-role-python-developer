@@ -7,11 +7,14 @@
     pyenv_path: "{{ ansible_env.HOME }}/pyenv"
   when: pyenv_python_versions
 
-- name: Ensure venv installed
+- name: Ensure dependencies are installed
   package:
-    name: python3-venv
+    name: "{{ item }}"
     state: present
   become: true
+  with_items:
+    - python3-pip
+    - python3-venv
 
 - name: Check if pipx is installed
   command: "{{ ansible_env.HOME }}/.local/bin/pipx --version"
@@ -56,6 +59,7 @@
     url: https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
     dest: "{{ ansible_env.HOME }}/get-poetry.py"
     mode: "0400"
+    timeout: 20
   when: poetry_cmd is failed
   notify: delete poetry installer
 

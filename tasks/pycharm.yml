@@ -1,18 +1,12 @@
 ---
-- name: Download pycharm
-  get_url:
-    url: "{{ pycharm_download_url }}/pycharm-{{ pycharm_flavor }}-{{ pycharm_version }}.tar.gz"
-    dest: "~/pycharm-{{ pycharm_flavor }}-{{ pycharm_version }}.tar.gz"
-    owner: root
-    group: root
-    mode: 0644
+- name: Ensure snapd is installed
+  package:
+    name: snapd
+    state: present
+  become: true
 
-- name: Unarchive pycharm
-  unarchive:
-    src: "~/pycharm-{{ pycharm_flavor }}-{{ pycharm_version }}.tar.gz"
-    dest: "{{ pycharm_install_prefix }}"
-    creates: "{{ pycharm_install_prefix }}/pycharm-{{ pycharm_flavor }}-{{ pycharm_version }}"
-    copy: false
-
-- name: Run pycharm install script
-  shell: "{{ pycharm_install_prefix }}/pycharm-{{ pycharm_version }}/bin/pycharm.sh"
+- name: Install pycharm
+  community.general.snap:
+    name: "{{ pycharm_flavor }}"
+    classic: true
+  become: true

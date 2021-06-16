@@ -77,7 +77,7 @@ Here is the list of all variables and their default values:
 
 ## License
 
-MIT / BSD
+MIT
 
 ## Author Information
 
