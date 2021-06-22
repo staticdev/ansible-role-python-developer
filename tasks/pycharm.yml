@@ -7,6 +7,6 @@
 
 - name: Install pycharm
   community.general.snap:
-    name: "{{ pycharm_flavor }}"
+    name: "pycharm-{{ pycharm_flavor }}"
     classic: true
   become: true

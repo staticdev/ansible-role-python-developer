@@ -14,7 +14,7 @@
   become: true
   with_items:
     - python3-pip
-    - python3-venv
+    - python3-virtualenv
 
 - name: Check if pipx is installed
   command: "{{ ansible_env.HOME }}/.local/bin/pipx --version"
