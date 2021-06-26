@@ -35,3 +35,6 @@ galaxy_info:
 dependencies:
   - name: staticdev.pyenv
     version: 2.0.0
+  - name: gantsign.visual-studio-code
+    version: 6.6.0
+    when: install_vscode
