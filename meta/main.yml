@@ -2,10 +2,9 @@
 galaxy_info:
   author: staticdev
   role_name: python_developer
-  description: This install packages for developing in Python on multiple versions using Cookiecutter Hypermodern Python.
+  description: This installs packages for developing in Python on multiple versions using Cookiecutter Hypermodern Python.
 
-  license:
-    - MIT
+  license: MIT
 
   min_ansible_version: 2.11
 
