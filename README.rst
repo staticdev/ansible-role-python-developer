@@ -65,6 +65,16 @@ Example Playbook
       roles:
         - role: staticdev.python-developer
 
+    # role with pyenv attributes
+    - hosts: all
+      roles:
+        - role: staticdev.python-developer
+          vars:
+            pyenv_global: "3.9.6"
+            vscode_extensions:
+              - "3.9.6"
+              - "3.8.11"
+
     # role with pycharm
     - hosts: all
       roles:
@@ -83,16 +93,6 @@ Example Playbook
               - ms-python.python
               - ms-python.vscode-pylance
               - shan.code-settings-sync
-
-    # role with pyenv attributes
-    - hosts: all
-      roles:
-        - role: staticdev.python-developer
-          vars:
-            pyenv_global: "3.9.6"
-            vscode_extensions:
-              - "3.9.6"
-              - "3.8.11"
 
 
 License
