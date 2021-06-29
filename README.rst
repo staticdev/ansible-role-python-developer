@@ -24,6 +24,8 @@ Installs:
 - pyenv
 - poetry
 - cookiecutter
+- pycharm (optional)
+- vscode (optional)
 
 
 Requirements
@@ -37,13 +39,13 @@ Role Variables
 
 Here is the list of all variables and their default values:
 
+- `pyenv_global`: optional Python global version for pyenv (from `staticdev.pyenv`_)
+- `pyenv_python_versions`: optional list of Python versions installed (from `staticdev.pyenv`_)
 - `install_pycharm`: `false`
 - `pycharm_flavor`: `community`. You can use also `professional` or `edu`
 - `pycharm_version`: `2021.1.2`
 - `install_vscode`: `false`
 - `vscode_extensions`: optional list of name_ids of extensions. eg.: ms-python.python (Python Official Extension)
-- `pyenv_global`: optional Python global version for pyenv (from `staticdev.pyenv`_)
-- `pyenv_python_versions`: optional list of Python versions installed (from `staticdev.pyenv`_)
 
 
 Dependencies
