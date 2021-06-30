@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ansible-role-python-developer"
-version = "0.5.0"
+version = "0.5.1"
 description = "Ansible role to install Python developer tools."
 authors = ["staticdev <staticdev-support@protonmail.com>"]
 license = "MIT"
