@@ -1,7 +1,7 @@
 ---
 roles:
   - name: staticdev.pyenv
-    version: 2.1.1
+    version: 2.1.2
   - name: gantsign.visual-studio-code
     version: 6.6.0
     when: "{{ install_vscode }}"

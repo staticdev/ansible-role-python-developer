@@ -2,7 +2,7 @@
 galaxy_info:
   author: staticdev
   role_name: python_developer
-  description: This installs packages for developing in Python on multiple versions using Cookiecutter Hypermodern Python.
+  description: Ansible role to install packages for developing in Python on multiple versions using Cookiecutter Hypermodern Python.
 
   license: MIT
 
@@ -30,6 +30,7 @@ galaxy_info:
     - pyenv
     - pipx
     - precommit
+    - workstation
 
 dependencies:
   - name: staticdev.pyenv
