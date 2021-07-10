@@ -1,5 +1,5 @@
 ---
 - name: delete poetry installer
   file:
-    path: "/home/{{ lookup('env', 'USER') }}/get-poetry.py"
+    path: "/home/{{ lookup('env', 'USER') }}/install-poetry.py"
     state: absent
