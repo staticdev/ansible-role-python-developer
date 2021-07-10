@@ -14,7 +14,7 @@
   become: true
   with_items:
     - python3-pip
-    - python3-virtualenv
+    - python3-venv # needed for nox
 
 - name: Check if pipx is installed
   command: "{{ ansible_env.HOME }}/.local/bin/pipx --version"
@@ -69,7 +69,7 @@
 
 - name: Check if nox is installed
   stat:
-    path: "{{ ansible_env.HOME }}/.local/pipx/venvs/nox"
+    path: "{{ ansible_env.HOME }}/.local/bin/nox"
   register: nox_folder_check
 
 - name: Install nox
