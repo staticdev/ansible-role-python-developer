@@ -39,7 +39,7 @@ Role Variables
 
 Here is the list of all variables and their default values:
 
-- `pyenv_global`: optional Python global version for pyenv (from `staticdev.pyenv`_)
+- `pyenv_global`: optional list of Python global versions for pyenv (from `staticdev.pyenv`_)
 - `pyenv_python_versions`: optional list of Python versions installed (from `staticdev.pyenv`_)
 - `install_pycharm`: `false`
 - `pycharm_flavor`: `community`. You can use also `professional` or `edu`
@@ -70,8 +70,9 @@ Example Playbook
       roles:
         - role: staticdev.python-developer
           vars:
-            pyenv_global: "3.9.6"
-            vscode_extensions:
+            pyenv_global:
+              - "3.9.6"
+            pyenv_python_versions:
               - "3.9.6"
               - "3.8.11"
 
