@@ -34,7 +34,7 @@
   register: pre_commit_folder_check
 
 - name: Install pre-commit
-  command: pipx install pre-commit
+  command: "{{ ansible_env.HOME }}/.local/bin/pipx install pre-commit"
   register: output
   when: pre_commit_folder_check is failed
 
@@ -44,7 +44,7 @@
   register: cookiecutter_folder_check
 
 - name: Install cookiecutter
-  command: pipx install cookiecutter
+  command: "{{ ansible_env.HOME }}/.local/bin/pipx install cookiecutter"
   register: output
   when: cookiecutter_folder_check is failed
 
@@ -68,18 +68,18 @@
   when: poetry_cmd is failed
 
 - name: Check if nox is installed
-  command: "{{ ansible_env.HOME }}/.local/bin/nox"
-  register: nox_cmd
+  command: "{{ ansible_env.HOME }}/.local/bin/nox --version"
+  register: nox_version_cmd
   changed_when: false
   ignore_errors: true
 
 - name: Install nox
-  command: pipx install nox
-  when: nox_cmd is failed
+  command: "{{ ansible_env.HOME }}/.local/bin/pipx install nox"
+  when: nox_version_cmd is failed
 
 - name: Install nox-poetry
-  command: pipx inject nox nox-poetry
-  when: nox_cmd is failed
+  command: "{{ ansible_env.HOME }}/.local/bin/pipx inject nox nox-poetry"
+  when: nox_version_cmd is failed
 
 - name: Install pycharm
   include_tasks: pycharm.yml
