@@ -68,17 +68,18 @@
   when: poetry_cmd is failed
 
 - name: Check if nox is installed
-  stat:
-    path: "{{ ansible_env.HOME }}/.local/bin/nox"
-  register: nox_folder_check
+  command: "{{ ansible_env.HOME }}/.local/bin/nox"
+  register: nox_cmd
+  changed_when: false
+  ignore_errors: true
 
 - name: Install nox
   command: pipx install nox
-  when: nox_folder_check is failed
+  when: nox_cmd is failed
 
 - name: Install nox-poetry
   command: pipx inject nox nox-poetry
-  when: nox_folder_check is failed
+  when: nox_cmd is failed
 
 - name: Install pycharm
   include_tasks: pycharm.yml
