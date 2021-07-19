@@ -12,7 +12,7 @@
   tasks:
     - name: "Include ansible-role-python-developer"
       include_role:
-        name: "ansible-role-python-developer"
+        name: "staticdev.python_developer"
       vars:
         install_pycharm: true
         pycharm_flavor: professional
