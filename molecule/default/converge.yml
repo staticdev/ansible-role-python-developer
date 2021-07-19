@@ -10,4 +10,4 @@
       when: ansible_os_family == 'Debian'
 
   roles:
-    - ansible-role-python-developer
+    - staticdev.python_developer

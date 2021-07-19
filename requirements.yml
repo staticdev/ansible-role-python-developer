@@ -5,3 +5,7 @@ roles:
   - name: gantsign.visual-studio-code
     version: 6.6.0
     when: "{{ install_vscode }}"
+
+collections:
+  - name: community.general
+    version: 3.3.2
