@@ -58,14 +58,20 @@ Dependencies
 Example Playbook
 ----------------
 
+Here are some common usages of this role.
+
+1. Role without IDE:
+
 .. code:: yaml
 
-    # role without IDE
     - hosts: all
       roles:
         - role: staticdev.python-developer
 
-    # role with pyenv attributes
+2. Role defining Python versions:
+
+.. code:: yaml
+
     - hosts: all
       roles:
         - role: staticdev.python-developer
@@ -76,7 +82,10 @@ Example Playbook
               - "3.9.6"
               - "3.8.11"
 
-    # role with pycharm
+3. Role with Pycharm
+
+.. code:: yaml
+
     - hosts: all
       roles:
         - role: staticdev.python-developer
@@ -84,7 +93,10 @@ Example Playbook
             install_pycharm: true
             pycharm_flavor: edu
 
-    # role with vscode and extensions
+4. Role with vscode and extensions
+
+.. code:: yaml
+
     - hosts: all
       roles:
         - role: staticdev.python-developer
@@ -96,10 +108,18 @@ Example Playbook
               - shan.code-settings-sync
 
 
+Contributing
+------------
+
+Contributions are very welcome.
+To learn more, see the `Contributor Guide`_.
+
+
 License
 -------
 
-MIT
+Distributed under the terms of the MIT_ license,
+*Ansible role Python developer* is free and open source software.
 
 
 Author Information
