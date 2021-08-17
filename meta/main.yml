@@ -15,10 +15,7 @@ galaxy_info:
         - buster
     - name: Ubuntu
       versions:
-        - xenial
-        - bionic
         - focal
-        - groovy
 
   galaxy_tags:
     - python
