@@ -14,7 +14,7 @@
   become: true
   with_items:
     - python3-pip
-    - python3-venv # needed for nox
+    - python3-venv  # needed for nox
 
 - name: Check if pipx is installed
   command: "{{ ansible_env.HOME }}/.local/bin/pipx --version"
@@ -30,7 +30,7 @@
 
 - name: Check if pre-commit is installed
   stat:
-    path: "{{ ansible_env.HOME }}/.local/pipx/venvs/pre-commit"
+    path: "{{ ansible_env.HOME }}/.local/bin/pre-commit"
   register: pre_commit_folder_check
 
 - name: Install pre-commit
