@@ -127,7 +127,10 @@ Author Information
 
 `staticdev`_
 
+
 .. _Cookiecutter Hypermodern Python: https://github.com/cjolowicz/cookiecutter-hypermodern-python
 .. _gantsign.visual-studio-code: https://galaxy.ansible.com/gantsign/visual-studio-code
 .. _staticdev: https://github.com/staticdev
 .. _staticdev.pyenv: https://galaxy.ansible.com/staticdev/pyenv
+.. _MIT: https://opensource.org/licenses/MIT
+.. _Contributor Guide: CONTRIBUTING.rst
