@@ -29,14 +29,15 @@
   when: pipx_version_cmd is failed
 
 - name: Check if pre-commit is installed
-  stat:
-    path: "{{ ansible_env.HOME }}/.local/bin/pre-commit"
-  register: pre_commit_folder_check
+  command: "{{ ansible_env.HOME }}/.local/bin/pre-commit --version"
+  register: pre_commit_check
+  changed_when: false
+  ignore_errors: true
 
 - name: Install pre-commit
   command: "{{ ansible_env.HOME }}/.local/bin/pipx install pre-commit"
   register: output
-  when: pre_commit_folder_check is failed
+  when: pre_commit_check is failed
 
 - name: Check if cookiecutter is installed
   stat:
