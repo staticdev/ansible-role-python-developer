@@ -43,7 +43,6 @@ Here is the list of all variables and their default values:
 - `pyenv_python_versions`: optional list of Python versions installed (from `staticdev.pyenv`_)
 - `install_pycharm`: `false`
 - `pycharm_flavor`: `community`. You can use also `professional` or `edu`
-- `pycharm_version`: `latest`
 - `install_vscode`: `false`
 - `vscode_extensions`: optional list of name_ids of extensions. eg.: ms-python.python (Python Official Extension)
 
