@@ -1,11 +1,11 @@
 Ansible role: Python developer
 ==============================
 
-|Status| |Tests|
+|License| |Tests|
 
-.. |Status| image:: https://badgen.net/badge/status/beta/orange
-   :target: https://badgen.net/badge/status/beta/orange
-   :alt: Project Status
+.. |License| image:: https://img.shields.io/pypi/l/git-portfolio
+   :target: https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License
+   :alt: License
 .. |Tests| image:: https://github.com/staticdev/ansible-role-python-developer/workflows/Tests/badge.svg
    :target: https://github.com/staticdev/ansible-role-python-developer/actions?workflow=Tests
    :alt: Tests
@@ -76,10 +76,10 @@ Here are some common usages of this role.
         - role: staticdev.python-developer
           vars:
             pyenv_global:
-              - "3.9.6"
+              - "3.10.0"
             pyenv_python_versions:
-              - "3.9.6"
-              - "3.8.11"
+              - "3.10.0"
+              - "3.9.9"
 
 3. Role with Pycharm
 
