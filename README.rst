@@ -1,9 +1,12 @@
 Ansible role: Python developer
 ==============================
 
-|License| |Tests|
+|License| |pre-commit| |Tests|
 
-.. |License| image:: https://img.shields.io/pypi/l/git-portfolio
+.. |pre-commit| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
+   :target: https://github.com/pre-commit/pre-commit
+   :alt: pre-commit
+.. |License| image:: https://img.shields.io/pypi/l/ansible-role-python-developer
    :target: https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License
    :alt: License
 .. |Tests| image:: https://github.com/staticdev/ansible-role-python-developer/workflows/Tests/badge.svg
