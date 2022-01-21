@@ -9,6 +9,10 @@ name: Tests
   schedule:
     - cron: "0 7 * * 0"
 
+defaults:
+  run:
+    working-directory: "staticdev.python_developer"
+
 jobs:
   lint:
     name: Lint
@@ -17,7 +21,7 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v2.4.0
         with:
-          fetch-depth: 2
+          path: "staticdev.python_developer"
 
       - name: Set up Python
         uses: actions/setup-python@v2.3.1
@@ -47,15 +51,21 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v2.4.0
         with:
-          fetch-depth: 2
+          path: "staticdev.python_developer"
 
       - name: Set up Python
         uses: actions/setup-python@v2.3.1
         with:
           python-version: "3.10"
 
+      - name: Upgrade pip
+        run: |
+          python3 -m pip install --constraint=.github/workflows/constraints.txt pip
+          python3 -m pip --version
+
       - name: Install test dependencies
-        run: pip3 install ansible molecule[docker] docker
+        run: |
+          python3 -m pip install --constraint=.github/workflows/constraints.txt ansible molecule[docker] docker
 
       - name: Run Molecule tests
         run: molecule test
