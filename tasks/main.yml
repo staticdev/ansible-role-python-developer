@@ -81,11 +81,3 @@
 - name: Install nox-poetry
   command: "{{ ansible_env.HOME }}/.local/bin/pipx inject nox nox-poetry"
   when: nox_version_cmd is failed
-
-- name: Install pycharm
-  include_tasks: pycharm.yml
-  when: install_pycharm
-
-- name: Install vscode
-  include_tasks: vscode.yml
-  when: install_vscode

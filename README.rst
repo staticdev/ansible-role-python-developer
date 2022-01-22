@@ -23,10 +23,12 @@ Installs:
 - Pipx_
 - Poetry_
 - pre-commit_
-- PyCharm_ (optional)
 - pyenv_
-- `Visual Studio Code`_ (optional)
 
+
+Note:
+
+This role does not install PyCharm_ and `Visual Studio Code`_ anymore. For a playbook that installs IDEs, try `Linux workstation playbook`_.
 
 Requirements
 ------------
@@ -41,17 +43,12 @@ Here is the list of all variables and their default values:
 
 - `pyenv_global`: optional list of Python global versions for pyenv (from `staticdev.pyenv`_)
 - `pyenv_python_versions`: optional list of Python versions installed (from `staticdev.pyenv`_)
-- `install_pycharm`: `false`
-- `pycharm_flavor`: `community`. You can use also `professional` or `edu`
-- `install_vscode`: `false`
-- `vscode_extensions`: optional list of name_ids of extensions. eg.: ms-python.python (Python Official Extension)
 
 
 Dependencies
 ------------
 
 - `staticdev.pyenv`_
-- `gantsign.visual-studio-code`_ (optional)
 
 
 Example Playbook
@@ -81,31 +78,6 @@ Here are some common usages of this role.
               - "3.10.0"
               - "3.9.9"
 
-3. Role with Pycharm
-
-.. code:: yaml
-
-    - hosts: all
-      roles:
-        - role: staticdev.python-developer
-          vars:
-            install_pycharm: true
-            pycharm_flavor: edu
-
-4. Role with vscode and extensions
-
-.. code:: yaml
-
-    - hosts: all
-      roles:
-        - role: staticdev.python-developer
-          vars:
-            install_vscode: true
-            vscode_extensions:
-              - ms-python.python
-              - ms-python.vscode-pylance
-              - shan.code-settings-sync
-
 
 Contributing
 ------------
@@ -130,6 +102,7 @@ Author Information
 .. _Contributor Guide: CONTRIBUTING.rst
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _Cookiecutter Hypermodern Python: https://github.com/cjolowicz/cookiecutter-hypermodern-python
+.. _Linux workstation playbook: https://github.com/staticdev/linux-workstation-playbook
 .. _Nox: https://nox.thea.codes/
 .. _Pipx: https://pypa.github.io/pipx/
 .. _Poetry: https://python-poetry.org/

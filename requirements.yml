@@ -1,11 +1,4 @@
 ---
 roles:
   - name: staticdev.pyenv
-    version: 2.5.0
-  - name: gantsign.visual-studio-code
-    version: 6.7.0
-    when: "{{ install_vscode }}"
-
-collections:
-  - name: community.general
-    version: 4.2.0
+    version: 2.5.1
