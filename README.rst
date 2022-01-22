@@ -56,7 +56,7 @@ Example Playbook
 
 Here are some common usages of this role.
 
-1. Role without IDE:
+1. Role using defaults:
 
 .. code:: yaml
 
