@@ -73,9 +73,9 @@ Here are some common usages of this role.
         - role: staticdev.python-developer
           vars:
             pyenv_global:
-              - "3.10.0"
+              - "3.10.1"
             pyenv_python_versions:
-              - "3.10.0"
+              - "3.10.1"
               - "3.9.9"
 
 
