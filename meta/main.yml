@@ -33,4 +33,4 @@ galaxy_info:
 
 dependencies:
   - name: staticdev.pyenv
-    version: 2.5.1
+    version: 2.6.1
