@@ -13,9 +13,11 @@ galaxy_info:
       versions:
         - bullseye
         - buster
+
     - name: Ubuntu
       versions:
         - focal
+        - jammy
 
   galaxy_tags:
     - python
