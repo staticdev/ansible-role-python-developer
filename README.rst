@@ -26,9 +26,8 @@ Installs:
 - pyenv_
 
 
-Note:
+Note: for a playbook that installs IDEs, try `Linux workstation playbook`_.
 
-This role does not install PyCharm_ and `Visual Studio Code`_ anymore. For a playbook that installs IDEs, try `Linux workstation playbook`_.
 
 Requirements
 ------------
@@ -73,9 +72,9 @@ Here are some common usages of this role.
         - role: staticdev.python-developer
           vars:
             pyenv_global:
-              - "3.10.1"
+              - "3.10.6"
             pyenv_python_versions:
-              - "3.10.1"
+              - "3.10.6"
               - "3.9.9"
 
 
@@ -106,11 +105,8 @@ Author Information
 .. _Nox: https://nox.thea.codes/
 .. _Pipx: https://pypa.github.io/pipx/
 .. _Poetry: https://python-poetry.org/
-.. _gantsign.visual-studio-code: https://galaxy.ansible.com/gantsign/visual-studio-code
 .. _pre-commit: https://pre-commit.com/
-.. _PyCharm: https://www.jetbrains.com/pycharm/
 .. _pyenv: https://github.com/pyenv/pyenv
 .. _staticdev: https://github.com/staticdev
 .. _staticdev.pyenv: https://galaxy.ansible.com/staticdev/pyenv
 .. _MIT: https://opensource.org/licenses/MIT
-.. _Visual Studio Code: https://code.visualstudio.com/

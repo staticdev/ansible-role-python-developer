@@ -1,6 +1,0 @@
----
-install_pycharm: false
-pycharm_download_url: https://download.jetbrains.com/python
-pycharm_flavor: community
-pycharm_install_prefix: /opt
-install_vscode: false
