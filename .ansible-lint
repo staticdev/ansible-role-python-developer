@@ -1,5 +1,3 @@
-exclude_paths: ~/.ansible
-
 skip_list:
   - '306'
   - '106'

@@ -1,6 +1,6 @@
 ---
 - name: Install pyenv
-  import_role:
+  ansible.builtin.import_role:
     name: staticdev.pyenv
   vars:
     pyenv_owner: "{{ ansible_env.USER }}"
@@ -8,7 +8,7 @@
   when: pyenv_python_versions
 
 - name: Ensure dependencies are installed
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   become: true
@@ -17,46 +17,46 @@
     - python3-venv # needed for nox
 
 - name: Check if pipx is installed
-  command: "{{ ansible_env.HOME }}/.local/bin/pipx --version"
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx --version"
   register: pipx_version_cmd
   changed_when: false
   ignore_errors: true
 
 - name: Install pipx
-  pip:
+  ansible.builtin.pip:
     name: pipx
     extra_args: --user
   when: pipx_version_cmd is failed
 
 - name: Check if pre-commit is installed
-  command: "{{ ansible_env.HOME }}/.local/bin/pre-commit --version"
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pre-commit --version"
   register: pre_commit_check
   changed_when: false
   ignore_errors: true
 
 - name: Install pre-commit
-  command: "{{ ansible_env.HOME }}/.local/bin/pipx install pre-commit"
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install pre-commit"
   register: output
   when: pre_commit_check is failed
 
 - name: Check if cookiecutter is installed
-  stat:
+  ansible.builtin.stat:
     path: "{{ ansible_env.HOME }}/.local/pipx/venvs/cookiecutter"
   register: cookiecutter_folder_check
 
 - name: Install cookiecutter
-  command: "{{ ansible_env.HOME }}/.local/bin/pipx install cookiecutter"
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install cookiecutter"
   register: output
   when: cookiecutter_folder_check is failed
 
 - name: Check if poetry is installed
-  command: "{{ ansible_env.HOME }}/.local/bin/poetry"
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/poetry"
   register: poetry_cmd
   changed_when: false
   ignore_errors: true
 
 - name: Download poetry installer
-  get_url:
+  ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py
     dest: "{{ ansible_env.HOME }}/install-poetry.py"
     mode: "0400"
@@ -65,19 +65,19 @@
   notify: delete poetry installer
 
 - name: Install poetry
-  command: "python3 {{ ansible_env.HOME }}/install-poetry.py"
+  ansible.builtin.command: "python3 {{ ansible_env.HOME }}/install-poetry.py"
   when: poetry_cmd is failed
 
 - name: Check if nox is installed
-  command: "{{ ansible_env.HOME }}/.local/bin/nox --version"
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/nox --version"
   register: nox_version_cmd
   changed_when: false
   ignore_errors: true
 
 - name: Install nox
-  command: "{{ ansible_env.HOME }}/.local/bin/pipx install nox"
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install nox"
   when: nox_version_cmd is failed
 
 - name: Install nox-poetry
-  command: "{{ ansible_env.HOME }}/.local/bin/pipx inject nox nox-poetry"
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx inject nox nox-poetry"
   when: nox_version_cmd is failed
