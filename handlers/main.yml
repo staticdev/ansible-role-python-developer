@@ -1,5 +1,5 @@
 ---
-- name: delete poetry installer
+- name: Delete poetry installer
   ansible.builtin.file:
     path: "/home/{{ lookup('env', 'USER') }}/install-poetry.py"
     state: absent
