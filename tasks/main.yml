@@ -37,6 +37,7 @@
 - name: Install pre-commit
   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install pre-commit"
   register: output
+  changed_when: "output.rc == 0"
   when: pre_commit_check is failed
 
 - name: Check if cookiecutter is installed
@@ -47,6 +48,7 @@
 - name: Install cookiecutter
   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install cookiecutter"
   register: output
+  changed_when: "output.rc == 0"
   when: cookiecutter_folder_check is failed
 
 - name: Check if poetry is installed
@@ -62,10 +64,12 @@
     mode: "0400"
     timeout: 20
   when: poetry_cmd is failed
-  notify: delete poetry installer
+  notify: Delete poetry installer
 
 - name: Install poetry
   ansible.builtin.command: "python3 {{ ansible_env.HOME }}/install-poetry.py"
+  register: output
+  changed_when: "output.rc == 0"
   when: poetry_cmd is failed
 
 - name: Check if nox is installed
@@ -76,8 +80,12 @@
 
 - name: Install nox
   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install nox"
+  register: output
+  changed_when: "output.rc == 0"
   when: nox_version_cmd is failed
 
 - name: Install nox-poetry
   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx inject nox nox-poetry"
+  register: output
+  changed_when: "output.rc == 0"
   when: nox_version_cmd is failed
