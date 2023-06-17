@@ -11,8 +11,8 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
+        - bookworm
         - bullseye
-        - buster
 
     - name: Ubuntu
       versions:
