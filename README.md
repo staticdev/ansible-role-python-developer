@@ -16,6 +16,7 @@ Installs:
 - [Poetry]
 - [pre-commit]
 - [pyenv]
+- [Tox]
 
 Note: for a playbook that installs IDEs, try [Linux workstation playbook].
 
@@ -54,10 +55,10 @@ Here are some common usages of this role.
     - role: staticdev.python-developer
       vars:
         pyenv_global:
-          - "3.11.0"
+          - "3.11.4"
         pyenv_python_versions:
-          - "3.11.0"
-          - "3.10.6"
+          - "3.11.4"
+          - "3.10.12"
 ```
 
 ## License
@@ -80,3 +81,4 @@ _Ansible role Python developer_ is free and open source software.
 [pyenv]: https://github.com/pyenv/pyenv
 [staticdev]: https://github.com/staticdev
 [staticdev.pyenv]: https://galaxy.ansible.com/staticdev/pyenv
+[tox]: https://tox.wiki/en/latest/
