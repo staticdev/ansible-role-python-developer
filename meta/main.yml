@@ -16,8 +16,8 @@ galaxy_info:
 
     - name: Ubuntu
       versions:
+        - jammy
         - focal
-        # - jammy
 
   galaxy_tags:
     - python

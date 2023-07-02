@@ -3,7 +3,7 @@
   ansible.builtin.import_role:
     name: staticdev.pyenv
   vars:
-    pyenv_owner: "{{ ansible_env.USER }}"
+    pyenv_owner: "{{ ansible_facts.user_id }}"
     pyenv_path: "{{ ansible_env.HOME }}/pyenv"
   when: pyenv_python_versions
 
