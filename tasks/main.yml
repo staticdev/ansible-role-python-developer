@@ -89,3 +89,15 @@
   register: output
   changed_when: "output.rc == 0"
   when: nox_version_cmd is failed
+
+- name: Check if tox is installed
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/tox --version"
+  register: tox_version_cmd
+  changed_when: false
+  ignore_errors: true
+
+- name: Install tox
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install tox"
+  register: output
+  changed_when: "output.rc == 0"
+  when: tox_version_cmd is failed
