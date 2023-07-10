@@ -35,76 +35,78 @@
     name: pipx
     extra_args: --user
   when: pipx_version_cmd is failed and ansible_distribution_release != 'bookworm'
-# - name: Check if pre-commit is installed
-#   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pre-commit --version"
-#   register: pre_commit_check
-#   changed_when: false
-#   ignore_errors: true
 
-# - name: Install pre-commit
-#   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install pre-commit"
-#   register: output
-#   changed_when: "output.rc == 0"
-#   when: pre_commit_check is failed
+- name: Check if pre-commit is installed
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pre-commit --version"
+  register: pre_commit_check
+  changed_when: false
+  ignore_errors: true
 
-# - name: Check if cookiecutter is installed
-#   ansible.builtin.stat:
-#     path: "{{ ansible_env.HOME }}/.local/pipx/venvs/cookiecutter"
-#   register: cookiecutter_folder_check
+- name: Install pre-commit
+  ansible.builtin.command: "{{ pipx_path }}/pipx install pre-commit"
+  register: output
+  changed_when: "output.rc == 0"
+  when: pre_commit_check is failed
 
-# - name: Install cookiecutter
-#   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install cookiecutter"
-#   register: output
-#   changed_when: "output.rc == 0"
-#   when: cookiecutter_folder_check is failed
+- name: Check if cookiecutter is installed
+  ansible.builtin.stat:
+    path: "{{ ansible_env.HOME }}/.local/pipx/venvs/cookiecutter"
+  register: cookiecutter_folder_check
+  ignore_errors: true
 
-# - name: Check if poetry is installed
-#   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/poetry"
-#   register: poetry_cmd
-#   changed_when: false
-#   ignore_errors: true
+- name: Install cookiecutter
+  ansible.builtin.command: "{{ pipx_path }}/pipx install cookiecutter"
+  register: output
+  changed_when: "output.rc == 0"
+  when: cookiecutter_folder_check is failed
 
-# - name: Download poetry installer
-#   ansible.builtin.get_url:
-#     url: https://install.python-poetry.org
-#     dest: "{{ ansible_env.HOME }}/install-poetry.py"
-#     mode: "0400"
-#     timeout: 20
-#   when: poetry_cmd is failed
-#   notify: Delete poetry installer
+- name: Check if poetry is installed
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/poetry"
+  register: poetry_cmd
+  changed_when: false
+  ignore_errors: true
 
-# - name: Install poetry
-#   ansible.builtin.command: "python3 {{ ansible_env.HOME }}/install-poetry.py"
-#   register: output
-#   changed_when: "output.rc == 0"
-#   when: poetry_cmd is failed
+- name: Download poetry installer
+  ansible.builtin.get_url:
+    url: https://install.python-poetry.org
+    dest: "{{ ansible_env.HOME }}/install-poetry.py"
+    mode: "0400"
+    timeout: 20
+  when: poetry_cmd is failed
+  notify: Delete poetry installer
 
-# - name: Check if nox is installed
-#   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/nox --version"
-#   register: nox_version_cmd
-#   changed_when: false
-#   ignore_errors: true
+- name: Install poetry
+  ansible.builtin.command: "python3 {{ ansible_env.HOME }}/install-poetry.py"
+  register: output
+  changed_when: "output.rc == 0"
+  when: poetry_cmd is failed
 
-# - name: Install nox
-#   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install nox"
-#   register: output
-#   changed_when: "output.rc == 0"
-#   when: nox_version_cmd is failed
+- name: Check if nox is installed
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/nox --version"
+  register: nox_version_cmd
+  changed_when: false
+  ignore_errors: true
 
-# - name: Install nox-poetry
-#   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx inject nox nox-poetry"
-#   register: output
-#   changed_when: "output.rc == 0"
-#   when: nox_version_cmd is failed
+- name: Install nox
+  ansible.builtin.command: "{{ pipx_path }}/pipx install nox"
+  register: output
+  changed_when: "output.rc == 0"
+  when: nox_version_cmd is failed
 
-# - name: Check if tox is installed
-#   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/tox --version"
-#   register: tox_version_cmd
-#   changed_when: false
-#   ignore_errors: true
+- name: Install nox-poetry
+  ansible.builtin.command: "{{ pipx_path }}/pipx inject nox nox-poetry"
+  register: output
+  changed_when: "output.rc == 0"
+  when: nox_version_cmd is failed
 
-# - name: Install tox
-#   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install tox"
-#   register: output
-#   changed_when: "output.rc == 0"
-#   when: tox_version_cmd is failed
+- name: Check if tox is installed
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/tox --version"
+  register: tox_version_cmd
+  changed_when: false
+  ignore_errors: true
+
+- name: Install tox
+  ansible.builtin.command: "{{ pipx_path }}/pipx install tox"
+  register: output
+  changed_when: "output.rc == 0"
+  when: tox_version_cmd is failed
