@@ -29,6 +29,7 @@ galaxy_info:
     - pyenv
     - pipx
     - precommit
+    - tox
     - workstation
 
 dependencies:
