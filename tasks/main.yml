@@ -49,16 +49,28 @@
   when: pre_commit_check is failed
 
 - name: Check if cookiecutter is installed
-  ansible.builtin.stat:
-    path: "{{ ansible_env.HOME }}/.local/pipx/venvs/cookiecutter"
-  register: cookiecutter_folder_check
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/cookiecutter --version"
+  register: cookiecutter_cmd
+  changed_when: false
   ignore_errors: true
 
 - name: Install cookiecutter
   ansible.builtin.command: "{{ pipx_path }}/pipx install cookiecutter"
   register: output
   changed_when: "output.rc == 0"
-  when: cookiecutter_folder_check is failed
+  when: cookiecutter_cmd is failed
+
+- name: Check if hatch is installed
+  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/hatch --version"
+  register: hatch_cmd
+  changed_when: false
+  ignore_errors: true
+
+- name: Install hatch
+  ansible.builtin.command: "{{ pipx_path }}/pipx install hatch"
+  register: output
+  changed_when: "output.rc == 0"
+  when: hatch_cmd is failed
 
 - name: Check if poetry is installed
   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/poetry"
