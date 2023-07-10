@@ -1,4 +1,7 @@
 ---
+- name: Load custom facts
+  ansible.builtin.import_tasks: custom_facts.yml
+
 - name: Install pyenv
   ansible.builtin.import_role:
     name: staticdev.pyenv
@@ -17,16 +20,21 @@
     - python3-venv # needed for nox
 
 - name: Check if pipx is installed
-  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx --version"
+  ansible.builtin.command: "{{ pipx_path }}/pipx --version"
   register: pipx_version_cmd
   changed_when: false
   ignore_errors: true
 
-- name: Install pipx
+- name: Install pipx on Debian Bookworm
+  ansible.builtin.package:
+    name: pipx
+  when: pipx_version_cmd is failed and ansible_distribution_release == 'bookworm'
+
+- name: Install pipx on non-Bookworm OS
   ansible.builtin.pip:
     name: pipx
     extra_args: --user
-  when: pipx_version_cmd is failed
+  when: pipx_version_cmd is failed and ansible_distribution_release != 'bookworm'
 
 - name: Check if pre-commit is installed
   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pre-commit --version"
@@ -35,7 +43,7 @@
   ignore_errors: true
 
 - name: Install pre-commit
-  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install pre-commit"
+  ansible.builtin.command: "{{ pipx_path }}/pipx install pre-commit"
   register: output
   changed_when: "output.rc == 0"
   when: pre_commit_check is failed
@@ -44,9 +52,10 @@
   ansible.builtin.stat:
     path: "{{ ansible_env.HOME }}/.local/pipx/venvs/cookiecutter"
   register: cookiecutter_folder_check
+  ignore_errors: true
 
 - name: Install cookiecutter
-  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install cookiecutter"
+  ansible.builtin.command: "{{ pipx_path }}/pipx install cookiecutter"
   register: output
   changed_when: "output.rc == 0"
   when: cookiecutter_folder_check is failed
@@ -79,13 +88,13 @@
   ignore_errors: true
 
 - name: Install nox
-  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install nox"
+  ansible.builtin.command: "{{ pipx_path }}/pipx install nox"
   register: output
   changed_when: "output.rc == 0"
   when: nox_version_cmd is failed
 
 - name: Install nox-poetry
-  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx inject nox nox-poetry"
+  ansible.builtin.command: "{{ pipx_path }}/pipx inject nox nox-poetry"
   register: output
   changed_when: "output.rc == 0"
   when: nox_version_cmd is failed
@@ -97,7 +106,7 @@
   ignore_errors: true
 
 - name: Install tox
-  ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pipx install tox"
+  ansible.builtin.command: "{{ pipx_path }}/pipx install tox"
   register: output
   changed_when: "output.rc == 0"
   when: tox_version_cmd is failed
