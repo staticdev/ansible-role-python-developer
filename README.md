@@ -11,6 +11,7 @@ Ansible role to install packages for developing in Python using [Cookiecutter Hy
 Installs:
 
 - [Cookiecutter]
+- [Hatch]
 - [Nox]
 - [Pipx]
 - [Poetry]
@@ -72,6 +73,7 @@ _Ansible role Python developer_ is free and open source software.
 
 [cookiecutter]: https://github.com/audreyr/cookiecutter
 [cookiecutter hypermodern python]: https://github.com/cjolowicz/cookiecutter-hypermodern-python
+[hatch]: https://hatch.pypa.io
 [linux workstation playbook]: https://github.com/staticdev/linux-workstation-playbook
 [mit]: https://opensource.org/licenses/MIT
 [nox]: https://nox.thea.codes/
