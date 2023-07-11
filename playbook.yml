@@ -1,0 +1,21 @@
+---
+- name: Define hosts
+  hosts: all
+  become: true
+
+  pre_tasks:
+    - name: Update apt cache and install pip.
+      ansible.builtin.apt:
+        name: python3-pip
+        update_cache: true
+        cache_valid_time: 600
+      when: ansible_os_family == 'Debian'
+
+    # # https://askubuntu.com/questions/1428181/module-lib-has-no-attribute-x509-v-flag-cb-issuer-check
+    # - name: Update pyOpenSSL.
+    #   ansible.builtin.pip:
+    #     name: pyOpenSSL
+    #     extra_args: --upgrade
+
+  roles:
+    - role: .

@@ -2,6 +2,14 @@
 - name: Load custom facts
   ansible.builtin.import_tasks: custom_facts.yml
 
+- name: Debug Facts
+  ansible.builtin.debug:
+    var: ansible_distribution_release
+
+- name: Debug Facts2
+  ansible.builtin.debug:
+    var: pipx_path
+
 - name: Install pyenv
   ansible.builtin.import_role:
     name: staticdev.pyenv
