@@ -28,6 +28,8 @@
 - name: Install pipx on Debian Bookworm
   ansible.builtin.package:
     name: pipx
+    state: present
+  become: true
   when: pipx_version_cmd is failed and ansible_distribution_release == 'bookworm'
 
 - name: Install pipx on non-Bookworm OS
