@@ -22,14 +22,7 @@ Note: for a playbook that installs IDEs, try [Linux workstation playbook].
 
 ## Requirements
 
-- [pyenv]
-
-## Role Variables
-
-Here is the list of all variables and their default values:
-
-- `pyenv_global`: optional list of Python global versions for pyenv (from [staticdev.pyenv])
-- `pyenv_python_versions`: optional list of Python versions installed (from [staticdev.pyenv])
+- [pyenv] (can be installed with [staticdev.pyenv])
 
 ## Example Playbook
 
@@ -50,12 +43,6 @@ Here are some common usages of this role.
   roles:
     - role: staticdev.pyenv
     - role: staticdev.python-developer
-      vars:
-        pyenv_global:
-          - "3.12.0"
-        pyenv_python_versions:
-          - "3.12.0"
-          - "3.11.4"
 ```
 
 ## License
