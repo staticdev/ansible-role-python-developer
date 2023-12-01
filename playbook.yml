@@ -12,5 +12,4 @@
       when: ansible_os_family == 'Debian'
 
   roles:
-    - role: staticdev.pyenv
     - role: .

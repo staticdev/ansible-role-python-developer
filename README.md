@@ -52,10 +52,10 @@ Here are some common usages of this role.
     - role: staticdev.python-developer
       vars:
         pyenv_global:
-          - "3.11.4"
+          - "3.12.0"
         pyenv_python_versions:
+          - "3.12.0"
           - "3.11.4"
-          - "3.10.12"
 ```
 
 ## License
