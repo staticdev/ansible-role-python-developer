@@ -16,14 +16,13 @@ Installs:
 - [Pipx]
 - [Poetry]
 - [pre-commit]
-- [pyenv]
 - [Tox]
 
 Note: for a playbook that installs IDEs, try [Linux workstation playbook].
 
 ## Requirements
 
-None.
+- [pyenv]
 
 ## Role Variables
 
@@ -31,10 +30,6 @@ Here is the list of all variables and their default values:
 
 - `pyenv_global`: optional list of Python global versions for pyenv (from [staticdev.pyenv])
 - `pyenv_python_versions`: optional list of Python versions installed (from [staticdev.pyenv])
-
-## Dependencies
-
-- [staticdev.pyenv]
 
 ## Example Playbook
 
@@ -53,6 +48,7 @@ Here are some common usages of this role.
 ```yaml
 - hosts: all
   roles:
+    - role: staticdev.pyenv
     - role: staticdev.python-developer
       vars:
         pyenv_global:
