@@ -1,4 +1,6 @@
 ---
+# ansible incorrectly identified Debian bookworm as focal
+# https://github.com/ansible/ansible/issues/79733
 - name: Set command path based on distribution
   ansible.builtin.set_fact:
-    pipx_path: "{{ '/usr/bin' if ansible_distribution_release == 'bookworm' else ansible_env.HOME + '/.local/bin' }}"
+    pipx_path: "{{ '/usr/bin' if ansible_distribution_release == 'focal' or ansible_distribution_release == 'bookworm' else ansible_env.HOME + '/.local/bin' }}"

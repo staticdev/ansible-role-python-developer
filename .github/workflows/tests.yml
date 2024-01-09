@@ -46,7 +46,6 @@ jobs:
           - debian12
           - debian11
           - ubuntu2204
-          - ubuntu2004
 
     steps:
       - name: Check out the repository

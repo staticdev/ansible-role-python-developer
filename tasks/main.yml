@@ -22,13 +22,13 @@
     name: pipx
     state: present
   become: true
-  when: pipx_version_cmd is failed and ansible_distribution_release == 'bookworm'
+  when: pipx_version_cmd is failed and (ansible_distribution_release == 'focal' or ansible_distribution_release == 'bookworm')
 
 - name: Install pipx on non-Bookworm OS
   ansible.builtin.pip:
     name: pipx
     extra_args: --user
-  when: pipx_version_cmd is failed and ansible_distribution_release != 'bookworm'
+  when: pipx_version_cmd is failed and ansible_distribution_release != 'focal' and ansible_distribution_release != 'bookworm'
 
 - name: Check if pre-commit is installed
   ansible.builtin.command: "{{ ansible_env.HOME }}/.local/bin/pre-commit --version"
