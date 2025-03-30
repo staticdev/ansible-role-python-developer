@@ -2,6 +2,8 @@
 
 [![Tests](https://github.com/staticdev/ansible-role-python-developer/workflows/Tests/badge.svg)][tests]
 
+**DEPRECATED: this project is not maintained anymore in favor of [Nixpkgs](https://github.com/NixOS/nixpkgs), [Devenv](https://devenv.sh/) and [linux-workstation-playbook](https://github.com/staticdev/linux-workstation-playbook).**
+
 [tests]: https://github.com/staticdev/ansible-role-python-developer/actions?workflow=Tests
 
 Ansible role to install packages for developing in Python using [Cookiecutter Hypermodern Python].
